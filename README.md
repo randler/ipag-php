@@ -17,7 +17,7 @@
   <a href="https://github.com/facebook/react-native/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
-  <a href="https://github.com/codificar/delivery-api-php/releases/">
+  <a href="https://github.com/randler/ipag-php/releases/">
     <img src="https://img.shields.io/badge/vers%C3%A3o-0.0.1-green" alt="Versão" />
   </a>
   <a href="https://github.com/randler/adiq-php/releases">
