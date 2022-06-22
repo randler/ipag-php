@@ -30,7 +30,7 @@ class Webhook extends Endpoint
     public function details(string $id)
     {
         return $this->client->request(
-            self::PUT,
+            self::GET,
             Routes::webhook()->details($id),
             []
         );
@@ -42,7 +42,7 @@ class Webhook extends Endpoint
     public function list()
     {
         return $this->client->request(
-            self::PUT,
+            self::GET,
             Routes::webhook()->list(),
             []
         );
