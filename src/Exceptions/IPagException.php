@@ -42,7 +42,7 @@ final class IPagException extends \Exception
         return sprintf('%d: %s - %s',
             $this->status,
             $this->description,
-            $this->tag,
+            $this->tag
         );
     }
 

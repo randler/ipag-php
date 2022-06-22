@@ -18,7 +18,7 @@ class Card extends Endpoint
         return $this->client->request(
             self::POST,
             Routes::card()->tokens(),
-            ['json' => $payload],
+            ['json' => $payload]
         );
     }
 
@@ -32,7 +32,7 @@ class Card extends Endpoint
         return $this->client->request(
             self::POST,
             Routes::card()->getToken($tokenId),
-            [],
+            []
         );
     }
 }

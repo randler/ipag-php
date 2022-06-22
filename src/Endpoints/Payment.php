@@ -18,7 +18,7 @@ class Payment extends Endpoint
         return $this->client->request(
             self::POST,
             Routes::payment()->create(),
-            ['json' => $payload],
+            ['json' => $payload]
         );
     }
     
@@ -32,7 +32,7 @@ class Payment extends Endpoint
         return $this->client->request(
             self::GET,
             Routes::payment()->details($id),
-            [],
+            []
         );
     }
     
@@ -46,7 +46,7 @@ class Payment extends Endpoint
         return $this->client->request(
             self::PUT,
             Routes::payment()->cancel($id),
-            [],
+            []
         );
     }
     /**
@@ -59,7 +59,7 @@ class Payment extends Endpoint
         return $this->client->request(
             self::PUT,
             Routes::payment()->capture($id),
-            [],
+            []
         );
     }
 }

@@ -61,7 +61,7 @@ class ResponseHandler
             return new IPagException(
                 $code,
                 $resource,
-                $message,
+                $message
             );
         } else if($guzzleException->getResponse()) {
             $response = $guzzleException->getResponse();
@@ -73,7 +73,7 @@ class ResponseHandler
                 return new IPagException(
                     $code,
                     $resource,
-                    $message,
+                    $message
                 );
 
             }
