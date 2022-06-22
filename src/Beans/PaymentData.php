@@ -961,7 +961,7 @@ class PaymentData
         return [
             "amount" => $this->amount,
             "callback_url" => $this->callback_url,
-            "order_id" => isset($this->order_id) ? $this->order_id : md5(uniqid(rand(), true)),
+            "order_id" => isset($this->order_id) ? $this->order_id : substr(md5(uniqid(rand(), true)),0, 15),
             "payment" => array (
                 "type" => $this->type,
                 "method" => $this->method,
@@ -991,7 +991,7 @@ class PaymentData
         return [
             "amount" => $this->amount,
             "callback_url" => $this->callback_url,
-            "order_id" => isset($this->order_id) ? $this->order_id : md5(uniqid(rand(), true)),
+            "order_id" => isset($this->order_id) ? $this->order_id : substr(md5(uniqid(rand(), true)),0, 15),
             "payment" => array (
                 "type" => $this->type,
                 "method" => $this->method,
@@ -1001,6 +1001,7 @@ class PaymentData
                 "fraud_analysis" => $this->fraud_analysis,
                 "card" => array (
                     "tokenize" => $this->tokenize,
+                    "token" => $this->card_token,
                     "holder" => $this->holder,
                     "number" => $this->number,
                     "expiry_month" => $this->expiry_month,
@@ -1065,7 +1066,7 @@ class PaymentData
         return [
             "amount" => $this->amount,
             "callback_url" => $this->callback_url,
-            "order_id" => isset($this->order_id) ? $this->order_id : md5(uniqid(rand(), true)),
+            "order_id" => isset($this->order_id) ? $this->order_id : substr(md5(uniqid(rand(), true)),0, 15),
             "payment" => array (
                 "type" => $this->type,
                 "method" => $this->method,
@@ -1111,7 +1112,7 @@ class PaymentData
         return [
             "amount" => $this->amount,
             "callback_url" => $this->callback_url,
-            "order_id" => isset($this->order_id) ? $this->order_id : md5(uniqid(rand(), true)),
+            "order_id" => isset($this->order_id) ? $this->order_id : substr(md5(uniqid(rand(), true)),0, 15),
             "payment" => array (
                 "type" => $this->type,
                 "method" => $this->method,
@@ -1190,6 +1191,30 @@ class PaymentData
 	public function setMethod(string $method)
 	{
 		$this->method = $method;
+		return $this;
+	}
+
+    /**
+     * Get the value of products
+     *
+     * @return  array
+     */ 
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+	/**
+	 * Set the value of products
+	 *
+	 * @param   array  $products  
+	 * 
+	 * return $this
+	 *
+	 */
+	public function setProducts(array $products)
+	{
+		$this->products = $products;
 		return $this;
 	}
 }
