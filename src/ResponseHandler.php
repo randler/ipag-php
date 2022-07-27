@@ -58,7 +58,7 @@ class ResponseHandler
             
             $resource = isset($response['resource']) ? $response['resource'] : '';
             
-            return new IPagException(
+            throw new IPagException(
                 $code,
                 $resource,
                 $message
@@ -70,7 +70,7 @@ class ResponseHandler
                 $resource = $response->getReasonPhrase();
                 $message = $response->getReasonPhrase();
 
-                return new IPagException(
+                throw new IPagException(
                     $code,
                     $resource,
                     $message
