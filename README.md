@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
   <a href="https://github.com/randler/ipag-php/releases/">
-    <img src="https://img.shields.io/badge/vers%C3%A3o-1.1.1-green" alt="Versão" />
+    <img src="https://img.shields.io/badge/vers%C3%A3o-2.0.0-green" alt="Versão" />
   </a>
   <a href="https://github.com/randler/adiq-php/releases">
     <img src="https://img.shields.io/packagist/dt/randler/ipag-php.svg" alt="Downloads" />
@@ -42,6 +42,12 @@ Você pode acessar a documentação oficial da API acessando esse [link](https:/
   - [Detalhe de uma transação](#detalhe-de-uma-transação)
   - [Cancelar uma transação](#cancelar-uma-transação)
   - [Capturar uma transação](#capturar-uma-transação)
+- [Requisição de Seller](#requisição-de-seller)
+  - [Store seller](#store-seller)
+  - [Update seller](#update-seller)
+  - [list sellers](#list-sellers)
+  - [query seller](#query-seller)
+
 <br>
 <br>
 <br>
@@ -178,5 +184,152 @@ Para fazer a requisição de transação.
 <br>
 <br>
 <hr>
+
+## Requisição de Seller
+Para fazer a requisição de transação.
+
+<br>
+
+### Store Seller
+```php
+
+  $appId = "***";
+  $appKey = "D5***DA";
+  $sandbox = true;
+
+  $client = new Client($this->appId, $this->appKey, $this->sandbox);
+
+  $address = new Address();
+  $address->setStreet('Rua')
+      ->setNumber('1A')
+      ->setDistrict('Bairro')
+      ->setComplement('Apto')
+      ->setCity('Belo Horizonte')
+      ->setState('BH')
+      ->setZipcode('30190-050');
+  
+  $owner = new Owner();
+  $owner->setName('João')
+      ->setEmail('Joao@mail.com')
+      ->setPhone('(77) 98845-5689')
+      ->setCPF('012.345.678-90')
+      ->setBirthdate('01/01/2001');
+
+  $bank = new Bank();
+  $bank->setCode('290')
+      ->setAgency('0001')
+      ->setAccount('100500')
+      ->setType('checkings')
+      ->setExternalId('joao@mail.com');
+
+  $address = $address->getAddressData();
+  $owner = $owner->getOwnerData();
+  $bank = $bank->getBankData();
+
+  $dataSeller = new SellerData();
+  $dataSeller->setLogin('username')
+      ->setPassword('senha')
+      ->setName('joao')
+      ->setCpfCnpj('012.345.678-90')
+      ->setEmail('joao@mail.com')
+      ->setPhone('(77) 98845-5689')
+      ->setDescription("description seller")
+      ->addAddress($address)
+      ->addOwner($owner)
+      ->addBank($bank);
+
+  $dataSeller = $dataSeller->getSellersStoreData();
+  $seller = $client
+      ->seller()
+      ->create($dataSeller);
+```
+<br>
+
+### Update Seller
+```php
+
+  $appId = "***";
+  $appKey = "D5***DA";
+  $sandbox = true;
+
+  $client = new Client($this->appId, $this->appKey, $this->sandbox);
+
+  $address = new Address();
+  $address->setStreet('Rua')
+      ->setNumber('1A')
+      ->setDistrict('Bairro')
+      ->setComplement('Apto')
+      ->setCity('Belo Horizonte')
+      ->setState('BH')
+      ->setZipcode('30190-050');
+  
+  $owner = new Owner();
+  $owner->setName('João')
+      ->setEmail('Joao@mail.com')
+      ->setPhone('(77) 98845-5689')
+      ->setCPF('012.345.678-90')
+      ->setBirthdate('01/01/2001');
+
+  $bank = new Bank();
+  $bank->setCode('290')
+      ->setAgency('0001')
+      ->setAccount('100500')
+      ->setType('checkings')
+      ->setExternalId('joao@mail.com');
+
+  $address = $address->getAddressData();
+  $owner = $owner->getOwnerData();
+  $bank = $bank->getBankData();
+
+  $dataSeller = new SellerData();
+  $dataSeller->setId('123456789')
+      ->setLogin('username')
+      ->setPassword('senha')
+      ->setName('joao')
+      ->setCpfCnpj('012.345.678-90')
+      ->setEmail('joao@mail.com')
+      ->setPhone('(77) 98845-5689')
+      ->setDescription("description seller")
+      ->addAddress($address)
+      ->addOwner($owner)
+      ->addBank($bank);
+
+  $dataSeller = $dataSeller->getSellersUpdateData();
+  $seller = $client
+      ->seller()
+      ->update($dataSeller);
+```
+<br>
+
+### List Sellers
+```php
+
+  $appId = "***";
+  $appKey = "D5***DA";
+  $sandbox = true;
+
+  $client = new Client($this->appId, $this->appKey, $this->sandbox);
+
+  $seller = $client
+      ->seller()
+      ->list();
+```
+<br>
+
+### Query Sellers
+```php
+
+  $appId = "***";
+  $appKey = "D5***DA";
+  $sandbox = true;
+
+  $client = new Client($this->appId, $this->appKey, $this->sandbox);
+
+  $id = '123456789';
+  $seller = $client
+    ->seller()
+    ->query($id);
+```
+<br>
 
 <br>

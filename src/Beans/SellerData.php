@@ -7,6 +7,14 @@ class SellerData
 {
     /**
     * @var string
+    * Id to update seller | 
+    * Mandatory: Yes | 
+    * Size: -
+    */
+    private $id;
+
+    /**
+    * @var string
     * Login Access for Seller Account | 
     * Mandatory: Yes | 
     * Size: 50
@@ -93,6 +101,18 @@ class SellerData
     */
     private $bank = [];
     
+	/**
+    * @param string $id | 
+    * Id to update seller | 
+    * Mandatory: Yes | 
+    * Size: -
+    */
+    public function setId(string $id) 
+	{
+		$this->id = $id;
+		return $this;
+	}
+
 	/**
     * @param string $login | 
     * Login Access for Seller Account | 
@@ -225,9 +245,32 @@ class SellerData
 		return $this;
 	}
 
-	public function getSellersData()
+    /**
+     * @return array return all data to create seller
+     */
+	public function getSellersStoreData()
 	{
 		return [
+			"login" 		=> $this->login,
+			"password" 		=> $this->password,
+			"name" 			=> $this->name,
+			"cpf_cnpj" 		=> $this->cpfCnpj,
+			"email" 		=> $this->email,
+			"phone" 		=> $this->phone,
+			"description" 	=> $this->description,
+			"address" 		=> $this->address,
+			"owner" 		=> $this->owner,
+			"bank" 			=> $this->bank, 
+		];
+	}
+
+    /**
+     * @return array  returnall data to update seller
+     */
+	public function getSellersUpdateData()
+	{
+		return [
+            "id"            => $this->id,
 			"login" 		=> $this->login,
 			"password" 		=> $this->password,
 			"name" 			=> $this->name,
