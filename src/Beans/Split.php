@@ -2,8 +2,6 @@
 
 namespace IPag\Beans;
 
-use FG\ASN1\Universal\Boolean;
-
 class Split
 {
     /**

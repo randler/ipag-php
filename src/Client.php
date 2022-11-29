@@ -7,6 +7,7 @@ use IPag\Endpoints\Webhook;
 use IPag\Endpoints\Payment;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
+use IPag\Endpoints\Seller;
 use IPag\Exceptions\InvalidJsonException;
 
 class Client
@@ -40,6 +41,11 @@ class Client
     private $payment;
     
     /**
+     * @var \IPag\Endpoints\Seller
+     */
+    private $seller;
+    
+    /**
      * @var \IPag\Endpoints\Card
      */
     private $card;
@@ -68,6 +74,7 @@ class Client
         $this->authorization = Key::getKeyBase64($appId, $appKey);
 
         $this->payment = new Payment($this);
+        $this->seller = new Seller($this);
         $this->card = new Card($this);
         $this->webhook = new Webhook($this);
     }
@@ -125,6 +132,14 @@ class Client
     public function payment()
     {
         return $this->payment;
+    }
+
+    /**
+     * @return \IPag\Endpoints\Seller
+     */
+    public function seller()
+    {
+        return $this->seller;
     }
 
     /**

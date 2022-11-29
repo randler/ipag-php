@@ -31,6 +31,31 @@ class Routes
 
         return $anonymous;
     }
+    /**
+     * @return \IPag\Anonymous
+     */
+    public static function seller()
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->create = static function () {
+            return Client::SERVICE . "/resources/sellers";
+        };
+
+        $anonymous->query = static function ($id) {
+            return Client::SERVICE . "/resources/sellers?id=$id";
+        };
+
+        $anonymous->update = static function ($id) {
+            return Client::SERVICE . "/resources/sellers?id=$id";
+        };
+
+        $anonymous->list = static function () {
+            return Client::SERVICE . "/resources/sellers";
+        };
+
+        return $anonymous;
+    }
     
     /**
      * @return \IPag\Anonymous
