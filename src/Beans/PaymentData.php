@@ -186,6 +186,10 @@ class PaymentData
      * @var array
      */
     private $products;
+    /**
+     * @var array
+     */
+    private $splitRules = [];
 
     public function __construct() {}
 
@@ -979,6 +983,7 @@ class PaymentData
                 "name" => $this->name,
                 "cpf_cnpj" => $this->cpf_cnpj,
             ),
+            "split_rules" => $this->split_rules,
         ];
     }
     /**
@@ -1026,7 +1031,8 @@ class PaymentData
                     "zipcode" => $this->billing_address_zipcode,
                 ),
             ),
-            "products" => $this->products
+            "products" => $this->products,
+            "split_rules" => $this->split_rules,
         ];
     }
 
@@ -1054,6 +1060,7 @@ class PaymentData
                 "name" => $this->name,
                 "cpf_cnpj" => $this->cpf_cnpj,
             ),
+            "split_rules" => $this->split_rules,
         ];
     }
     /**
@@ -1215,6 +1222,29 @@ class PaymentData
 	public function setProducts(array $products)
 	{
 		$this->products = $products;
+		return $this;
+	}
+    /**
+     * Get the value of splitRules
+     *
+     * @return  array
+     */ 
+    public function getSplitRules()
+    {
+        return $this->splitRules;
+    }
+
+	/**
+	 * Set the value of splitRules
+	 *
+	 * @param   array  $splitRules  
+	 * 
+	 * return $this
+	 *
+	 */
+	public function setSplitRules(array $splitRules)
+	{
+		$this->splitRules = $splitRules;
 		return $this;
 	}
 }
