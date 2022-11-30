@@ -59,7 +59,7 @@ class Seller extends Endpoint
     {
         return $this->client->request(
             self::PUT,
-            Routes::seller()->update($payload['id']),
+            Routes::seller()->update($payload),
             ['json' => $payload]
         );
     }

@@ -46,8 +46,13 @@ class Routes
             return Client::SERVICE . "/resources/sellers?id=$id";
         };
 
-        $anonymous->update = static function ($id) {
-            return Client::SERVICE . "/resources/sellers?id=$id";
+        $anonymous->update = static function ($payload) {
+            if($payload['id']) {
+                return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
+            } else if($payload['cpf_cnpj']) {
+                return Client::SERVICE . "/resources/sellers?cpf_cnpj=" . $payload['cpf_cnpj'];
+            }
+            return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
         };
 
         $anonymous->list = static function () {
