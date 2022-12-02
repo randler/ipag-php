@@ -499,6 +499,20 @@ class PaymentData
 		return $this;
 	}
 
+	/**
+	 * Set the value of fraud_analysis
+	 *
+	 * @param   boll  $fraud_analysis  
+	 * 
+	 * return $this
+	 *
+	 */
+	public function setFraudAnalysis(bool $fraud_analysis)
+	{
+		$this->fraud_analysis = $fraud_analysis;
+		return $this;
+	}
+
     /**
      * Get the value of email
      *
@@ -983,7 +997,7 @@ class PaymentData
                 "name" => $this->name,
                 "cpf_cnpj" => $this->cpf_cnpj,
             ),
-            "split_rules" => $this->split_rules,
+            "split_rules" => $this->splitRules,
         ];
     }
     /**
@@ -1032,7 +1046,7 @@ class PaymentData
                 ),
             ),
             "products" => $this->products,
-            "split_rules" => $this->split_rules,
+            "split_rules" => $this->splitRules,
         ];
     }
 
@@ -1060,7 +1074,7 @@ class PaymentData
                 "name" => $this->name,
                 "cpf_cnpj" => $this->cpf_cnpj,
             ),
-            "split_rules" => $this->split_rules,
+            "split_rules" => $this->splitRules,
         ];
     }
     /**

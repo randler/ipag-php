@@ -7,7 +7,7 @@ class Split
     /**
     * @var array
     */
-    private $splits;
+    private $splits = [];
     
     /**
     * @var string

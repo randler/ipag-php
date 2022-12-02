@@ -47,9 +47,9 @@ class Routes
         };
 
         $anonymous->update = static function ($payload) {
-            if($payload['id']) {
+            if(isset($payload['id']) && !empty($payload['id'])) {
                 return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
-            } else if($payload['cpf_cnpj']) {
+            } else if(isset($payload['cpf_cnpj']) && !empty($payload['cpf_cnpj'])) {
                 return Client::SERVICE . "/resources/sellers?cpf_cnpj=" . $payload['cpf_cnpj'];
             }
             return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
