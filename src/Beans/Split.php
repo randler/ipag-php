@@ -92,7 +92,7 @@ class Split
 	 * return $this
 	 *
 	 */
-	public function setPercentage(int $percentage)
+	public function setPercentage(float $percentage)
 	{
 		$this->percentage = $percentage;
 		return $this;
