@@ -42,8 +42,15 @@ class Routes
             return Client::SERVICE . "/resources/sellers";
         };
 
-        $anonymous->query = static function ($id) {
-            return Client::SERVICE . "/resources/sellers?id=$id";
+        $anonymous->query = static function ($payload) {
+            if(isset($payload['id']) && !empty($payload['id'])) {
+                return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
+            } else if(isset($payload['cpf_cnpj']) && !empty($payload['cpf_cnpj'])) {
+                return Client::SERVICE . "/resources/sellers?cpf_cnpj=" . $payload['cpf_cnpj'];
+            } else if(isset($payload['email']) && !empty($payload['email'])) {
+                return Client::SERVICE . "/resources/sellers?email=" . $payload['email'];
+            } 
+            return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
         };
 
         $anonymous->update = static function ($payload) {
@@ -51,7 +58,9 @@ class Routes
                 return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
             } else if(isset($payload['cpf_cnpj']) && !empty($payload['cpf_cnpj'])) {
                 return Client::SERVICE . "/resources/sellers?cpf_cnpj=" . $payload['cpf_cnpj'];
-            }
+            } else if(isset($payload['email']) && !empty($payload['email'])) {
+                return Client::SERVICE . "/resources/sellers?email=" . $payload['email'];
+            } 
             return Client::SERVICE . "/resources/sellers?id=" . $payload['id'];
         };
 

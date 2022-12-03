@@ -41,11 +41,11 @@ class Seller extends Endpoint
      *
      * @return \ArrayObject
      */
-    public function query(string $id)
+    public function query(array $payload)
     {
         return $this->client->request(
             self::GET,
-            Routes::seller()->query($id),
+            Routes::seller()->query($payload),
             []
         );
     }

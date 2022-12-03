@@ -38,25 +38,41 @@ class ResponseHandler
     private static function parseException(ClientException $guzzleException)
     {
 
-        //fwrite(STDERR, print_r($guzzleException));
+        //fwrite(STDERR, print_r($guzzleException->getMessage()));
+
+        //return var_Dump($guzzleException->getMessage());
 
         if($guzzleException->getMessage()) {
             $message = $guzzleException->getMessage();
+
             $response = explode("response:", $message)[1];
-            $response = json_decode($response, true);
+            if(strpos($response, '(truncated...)') !== false) {
+                $response = trim(str_replace('(truncated...)', '"', $response));
+            }
+
+            $responseDecoded = json_decode($response, true);
             
-            if(isset($response['error'])) {
-                $response = $response['error'];
+            if(!$responseDecoded) {
+                throw new IPagException(
+                    406,
+                    '',
+                    $response
+                );
+            }
+
+
+            if(isset($responseDecoded['error'])) {
+                $responseDecoded = $responseDecoded['error'];
             }
             
-            $code = isset($response['code']) ? $response['code'] : '';
-            $message = isset($response['message']) ? $response['message'] : '';
+            $code = isset($responseDecoded['code']) ? $responseDecoded['code'] : '';
+            $message = isset($responseDecoded['message']) ? $responseDecoded['message'] : '';
             
             if(is_array($message)) {
                 $message = json_encode($message);
             }
             
-            $resource = isset($response['resource']) ? $response['resource'] : '';
+            $resource = isset($responseDecoded['resource']) ? $$responseDecoded['resource'] : '';
             
             throw new IPagException(
                 $code,

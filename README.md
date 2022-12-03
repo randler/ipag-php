@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
   <a href="https://github.com/randler/ipag-php/releases/">
-    <img src="https://img.shields.io/badge/vers%C3%A3o-2.1.0-green" alt="Versão" />
+    <img src="https://img.shields.io/badge/vers%C3%A3o-2.1.1-green" alt="Versão" />
   </a>
   <a href="https://github.com/randler/adiq-php/releases">
     <img src="https://img.shields.io/packagist/dt/randler/ipag-php.svg" alt="Downloads" />
@@ -325,10 +325,14 @@ Para fazer a requisição de transação.
 
   $client = new Client($this->appId, $this->appKey, $this->sandbox);
 
-  $id = '123456789';
+  $payload = array(
+    'id' => '123456789'
+    'cpf_cnpj' => '23589642596'
+    'email' => 'joao@mail.com'
+  );
   $seller = $client
     ->seller()
-    ->query($id);
+    ->query($payload);
 ```
 <br>
 
