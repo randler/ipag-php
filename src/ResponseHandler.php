@@ -72,7 +72,7 @@ class ResponseHandler
                 $message = json_encode($message);
             }
             
-            $resource = isset($responseDecoded['resource']) ? $$responseDecoded['resource'] : '';
+            $resource = isset($responseDecoded['resource']) ? $responseDecoded['resource'] : '';
             
             throw new IPagException(
                 $code,
