@@ -1044,6 +1044,14 @@ class PaymentData
                     "state" => $this->billing_address_state,
                     "zipcode" => $this->billing_address_zipcode,
                 ),
+                "shipping_address" => array(
+                    "street" => $this->billing_address_street,
+                    "number" => $this->billing_address_number,
+                    "complement" => $this->billing_address_complement,
+                    "city" => $this->billing_address_city,
+                    "state" => $this->billing_address_state,
+                    "zipcode" => $this->billing_address_zipcode,
+                )
             ),
             "products" => $this->products,
             "split_rules" => $this->splitRules,
