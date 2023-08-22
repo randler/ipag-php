@@ -67,8 +67,22 @@ class Split
                 "hold_receivables" => $this->holdReceivables,
             ]
         );
+		$this->resetData();
         return $this;
     }
+
+	/**
+	 * reset data to clean vars
+	 */
+	private function resetData()
+	{
+    	$this->sellerId = "";
+		$this->percentage = 0;
+		$this->amount = 0;
+		$this->liable = false;
+		$this->chargeProcessingFee = false;
+    	$this->holdReceivables = false;
+	}
 
 	/**
 	 * Set the value of selletId
